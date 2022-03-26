@@ -1,0 +1,39 @@
+{
+  "name": "@miaos/catsay",
+  "version": "0.0.1",
+  "description": "catsay is a cat say something...",
+  "main": "dist/catsay.js",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pomelo-chuan/catsay.git"
+  },
+  "keywords": ["catsay", "catthink", "cowsay", "talking", "ASCII", "art"],
+  "author": "pomelo-chuan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pomelo-chuan/catsay/issues"
+  },
+  "bin": {
+    "catsay": "./catsay.js",
+    "catthink": "./catsay.js"
+  },
+  "homepage": "https://github.com/pomelo-chuan/catsay#readme",
+  "dependencies": {
+    "get-stdin": "^8.0.0",
+    "string-width": "^5.1.2",
+    "strip-final-newline": "^2.0.0",
+    "yargs": "^17.4.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^21.0.2",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "rollup": "^2.70.1"
+  }
+}
