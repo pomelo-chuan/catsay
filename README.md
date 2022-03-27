@@ -23,12 +23,18 @@ $ npm i @miaos/catsay -g
 
 ## Usage
 ```
-catsay I Love Cat.
+$ catsay I Love Cat.
+$ catthink Cat is so cute.
 ```
 
-or
+help
 ```
-catthink Cat is so cute.
+$ catsay -h
+```
+
+Specific eye and mouse
+```
+$ catsay I love you -E=d -M=U
 ```
 
 ## Use in js module
@@ -42,9 +48,15 @@ console.log(catsay.say('我爱你'));
 console.log(catsay.say({
   text: 'I Love You',
   e: '9', // eye of cat, default is @
+  E: '9', // same as e
+  eye: '9', // same as e
   m: 'w', // mouth of cat, default is m
+  M: 'w', // same as m
+  mouse: 'w', // same as m
   boxStyle: 'box' // box or topAndBottomLine, default is box
 }));
+
+console.log(catsay.think('I Love You'));
 ```
 
 ## boxStyle
