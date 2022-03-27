@@ -373,29 +373,48 @@
     return textList;
   }
 
-  function insertPadding(textList, padding) {
-    if (padding) {
-      return textList.map(function (it) {
-        return generateChar(' ', padding) + it + generateChar(' ', padding);
-      });
-    }
+  function border(textList, breakPoint) {
+    var padding = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+    var result = ['┌' + generateChar('─', breakPoint + padding * 2) + '┐'];
+    textList.forEach(function (it) {
+      result.push('│' + generateChar(' ', padding) + it + generateChar(' ', breakPoint - stringWidth(it)) + generateChar(' ', padding) + '│');
+    });
+    result.push('└' + generateChar('─', breakPoint + padding * 2) + '┘');
+    return result;
+  }
 
-    return textList;
+  function topAndBottomLine(textList, breakPoint) {
+    var padding = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+    var divider = generateChar('-', breakPoint + padding * 2);
+    var result = [divider];
+    textList.forEach(function (it) {
+      result.push(generateChar(' ', padding) + it + generateChar(' ', padding));
+    });
+    result.push(divider);
+    return result;
   }
 
   function bubble(text) {
     var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
         _ref$padding = _ref.padding,
-        padding = _ref$padding === void 0 ? 3 : _ref$padding,
+        padding = _ref$padding === void 0 ? 2 : _ref$padding,
         _ref$type = _ref.type,
-        type = _ref$type === void 0 ? 'say' : _ref$type;
+        type = _ref$type === void 0 ? 'say' : _ref$type,
+        _ref$boxStyle = _ref.boxStyle,
+        boxStyle = _ref$boxStyle === void 0 ? 'box' : _ref$boxStyle;
 
+    var textList = [];
     var breakPoint = computeBreakPoint(text);
-    var textList = getTextList(text, breakPoint);
-    var textListWithPadding = insertPadding(textList, padding);
-    var divider = generateChar('-', breakPoint + padding * 2);
+    textList = getTextList(text, breakPoint);
+
+    if (boxStyle === 'topAndBottomLine') {
+      textList = topAndBottomLine(textList, breakPoint, padding);
+    } else {
+      textList = border(textList, breakPoint, padding);
+    }
+
     var arrow = type === 'say' ? '  \\\n' + '   \\\n' : '  O\n' + '   o\n';
-    var result = divider + '\n' + textListWithPadding.join('\n') + '\n' + divider + '\n' + arrow;
+    var result = textList.join('\n') + '\n' + arrow;
     return result;
   }
 
@@ -408,7 +427,7 @@
         m = _ref.m,
         M = _ref.M;
 
-    var tpl = '      |\\_|\\                \n' + '      |EYE.EYE |______________ \n' + '      >\\mouth_<          _____)\n' + '         \\_  ______ \\     \n' + '         / /   / / \\ \\   \n' + '        (_/   (_/   \\_)   \n';
+    var tpl = '      |\\_|\\                \n' + '      |EYE.EYE |_______________\n' + '      >\\mouth_<          ______)\n' + '         \\_  ______ \\     \n' + '         / /   / / \\ \\   \n' + '        (_/   (_/   \\_)   \n';
     return tpl.replace(/EYE/g, eye || e || E || '@').replace(/mouth/g, mouth || m || M || 'm');
   }
 
@@ -432,7 +451,8 @@
     var _options = typeof text === 'string' ? options : text;
 
     return bubble(_text, {
-      type: type
+      type: type,
+      boxStyle: _options.boxStyle
     }) + getCat(_options);
   }
 

@@ -1,20 +1,20 @@
 # catsay
 
 ```
-------------------------
-   Hello from catsay.
-------------------------
+┌──────────────────────┐
+│  Hello from catsay.  │
+└──────────────────────┘
   \
    \
-      |\_|\
-      |@.@ |______________
-      >\m_<          _____)
-         \_  ______ \
-         / /   / / \ \
-        (_/   (_/   \_)
+      |\_|\                
+      |@.@ |_______________
+      >\m_<          ______)
+         \_  ______ \     
+         / /   / / \ \   
+        (_/   (_/   \_)   
 ```
 
-`catsay` is a cat say something that you want to say in terminal. Inspire by [cowsay](https://github.com/piuccio/cowsay).
+`catsay` is a cat say something that you want to say in terminal. I love cat so I make it and it inspire by [cowsay](https://github.com/piuccio/cowsay).
 
 ## Install
 ```
@@ -31,17 +31,64 @@ or
 catthink Cat is so cute.
 ```
 
-## Use in js api
+## Use in js module
 ```javascript
-import { say, think } from '@miaos/catsay';
+const catsay = require('@miaos/catsay');
+// or
+import catsay from '@miaos/catsay';
 
 console.log(catsay.say('我爱你'));
 
 console.log(catsay.say({
   text: 'I Love You',
-  e: '9',
-  m: 'w'
+  e: '9', // eye of cat, default is @
+  m: 'w', // mouth of cat, default is m
+  boxStyle: 'box' // box or topAndBottomLine, default is box
 }));
+```
+
+## boxStyle
+```
+┌───────────────┐
+│  I love you.  │
+└───────────────┘
+  \
+   \
+      |\_|\
+      |9.9 |_______________
+      >\w_<          ______)
+         \_  ______ \
+         / /   / / \ \
+        (_/   (_/   \_)
+```
+```
+---------------
+  I love you.
+---------------
+  \
+   \
+      |\_|\
+      |9.9 |_______________
+      >\w_<          ______)
+         \_  ______ \
+         / /   / / \ \
+        (_/   (_/   \_)
+```
+
+## Use in browser
+```html
+<script src="path/to/catsay.js"></script>
+<style>
+  pre {
+    font-family: Consolas, Monaco, monospace;
+  }
+</style>
+
+<pre id="cat"></pre>
+<script>
+  document.querySelector('#cat').innerHTML = catsay.think({ text: 'I love you.', boxStyle: 'topAndBottomLine' });
+</script>
+
 ```
 
 ## Pipe

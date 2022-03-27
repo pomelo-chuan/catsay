@@ -1,6 +1,6 @@
 {
   "name": "@miaos/catsay",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "catsay is a cat say something...",
   "main": "dist/catsay.js",
   "scripts": {
@@ -10,7 +10,14 @@
     "type": "git",
     "url": "git+https://github.com/pomelo-chuan/catsay.git"
   },
-  "keywords": ["catsay", "catthink", "cowsay", "talking", "ASCII", "art"],
+  "keywords": [
+    "catsay",
+    "catthink",
+    "cowsay",
+    "talking",
+    "ASCII",
+    "art"
+  ],
   "author": "pomelo-chuan",
   "license": "ISC",
   "bugs": {

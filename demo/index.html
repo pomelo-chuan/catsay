@@ -7,12 +7,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>catsay</title>
   <script src="../dist/catsay.js"></script>
+  <style>
+    pre {
+      font-family: Consolas, Monaco, monospace;
+    }
+  </style>
 </head>
 
 <body>
-  <div id="cat"></div>
+  <pre id="cat"></pre>
   <script>
-    document.querySelector('#cat').innerHTML = '<pre>' + catsay.say('我爱你') + '</pre>';
+    document.querySelector('#cat').innerHTML = catsay.think({ text: 'I love you.', boxStyle: 'topAndBottomLine' });
   </script>
 </body>
 

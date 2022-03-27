@@ -1,10 +1,11 @@
 const catsay = require('../dist/catsay.js');
 
 console.log(catsay.say('我爱你'));
-console.log(catsay.say(123456789));
+
+console.log(catsay.say('Hello from catsay.'));
 
 console.log(catsay.say({
-  text: '我爱你',
+  text: 'I love you.',
   e: '9',
   m: 'w'
 }));
