@@ -12,6 +12,7 @@ export default {
     babel({ babelHelpers: 'bundled' }),
   ],
   output: [
-    { file: 'dist/catsay.js', format: 'umd', name: 'catsay' },
+    { file: 'dist/catsay.umd.js', format: 'umd', name: 'catsay' },
+    { file: 'dist/catsay.es.js', format: 'es' },
   ],
 }

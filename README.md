@@ -77,7 +77,7 @@ console.log(catsay.say({
 
 ## Use in browser
 ```html
-<script src="path/to/catsay.js"></script>
+<script src="path/to/catsay.umd.js"></script>
 <style>
   pre {
     font-family: Consolas, Monaco, monospace;

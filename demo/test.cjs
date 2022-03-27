@@ -1,4 +1,4 @@
-const catsay = require('../dist/catsay.js');
+const catsay = require('../dist/catsay.umd.js');
 
 console.log(catsay.say('我爱你'));
 

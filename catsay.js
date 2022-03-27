@@ -20,7 +20,7 @@ const yargs = require('yargs')
 
 const { argv } = yargs;
 
-const run = argv['$0'] === 'catsay' ? require('./dist/catsay').say : require('./dist/catsay').think;
+const run = argv['$0'] === 'catsay' ? require('./dist/catsay.umd').say : require('./dist/catsay.umd').think;
 
 if (argv._.length) {
   console.log(run(argv._.join(' '), argv));
