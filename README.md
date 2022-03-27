@@ -35,7 +35,7 @@ catthink Cat is so cute.
 ```javascript
 const catsay = require('@miaos/catsay');
 // or
-import catsay from '@miaos/catsay';
+import * as catsay from '@miaos/catsay'
 
 console.log(catsay.say('我爱你'));
 
