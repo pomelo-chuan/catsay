@@ -14,7 +14,7 @@
         (_/   (_/   \_)   
 ```
 
-`catsay` is a cat say something that you want to say in terminal. I love cat so I make it and it inspire by [cowsay](https://github.com/piuccio/cowsay).
+`catsay` is a cat say something that you want to say in terminal. I love cat so I develop it and it inspire by [cowsay](https://github.com/piuccio/cowsay).
 
 ## Install
 ```
