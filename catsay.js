@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const yargs = require('yargs')
-  .usage('$0 [-M mouth_string] [-E eye_string] [-cat cat_name_string] text')
+  .usage('$0 [-M mouth_string] [-E eye_string] [-C cat_name_string] [-B bubble_style_string] text')
   .options({
     M: {
       default: 'm',
