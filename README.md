@@ -51,8 +51,8 @@ console.log(catsay.say({
   E: '9', // short for eye
   mouse: 'w', // same as m
   M: 'w', // short for mouse
-  boxStyle: 'box' // box or topAndBottomLine, default is box
-  B: 'box' // short for boxStyle
+  boxStyle: 'box', // box or topAndBottomLine, default is box
+  B: 'box', // short for boxStyle
 }));
 
 console.log(catsay.think('I Love You'));
