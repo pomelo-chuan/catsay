@@ -1,6 +1,6 @@
 {
   "name": "@miaos/catsay",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "catsay is a cat say something...",
   "main": "dist/catsay.umd.js",
   "module": "dist/catsay.es.js",

@@ -6,15 +6,20 @@
 └──────────────────────┘
   \
    \
-      |\_|\                
-      |@.@ |_______________
-      >\m_<          ______)
-         \_  ______ \     
-         / /   / / \ \   
-        (_/   (_/   \_)   
+   /\___/\
+  /       \
+ |  @   @  |
+>===  *  ===<
+  \   m   /
+    ======
+  /       \ __
+ |         |\ \
+ |         |/ /
+ |  || ||  |_/
+  \_oo_oo_/
 ```
 
-`catsay` is a cat say something that you want to say in terminal. I love cat so I make it and it inspire by [cowsay](https://github.com/piuccio/cowsay).
+`catsay` is a cat say something that you want to say in terminal. I always use [cowsay](https://github.com/piuccio/cowsay) to print some message but I love cat so I write `catsay`;
 
 ## Install
 ```
@@ -59,34 +64,6 @@ console.log(catsay.say({
 console.log(catsay.think('I Love You'));
 ```
 
-## boxStyle
-```
-┌───────────────┐
-│  I love you.  │
-└───────────────┘
-  \
-   \
-      |\_|\
-      |9.9 |_______________
-      >\w_<          ______)
-         \_  ______ \
-         / /   / / \ \
-        (_/   (_/   \_)
-```
-```
----------------
-  I love you.
----------------
-  \
-   \
-      |\_|\
-      |9.9 |_______________
-      >\w_<          ______)
-         \_  ______ \
-         / /   / / \ \
-        (_/   (_/   \_)
-```
-
 ## Use in browser
 ```html
 <script src="path/to/catsay.umd.js"></script>
@@ -107,3 +84,42 @@ console.log(catsay.think('I Love You'));
 ```
 $ echo print by catsay | catsay
 ```
+
+## boxStyle
+```
+┌─────────────────┐
+│  boxStyle: box  │
+└─────────────────┘
+  \
+   \
+   /\___/\
+  /       \
+ |  ️Q   ️Q  |
+>===  *  ===<
+  \   O   /
+    ======
+  /       \ __
+ |         |\ \
+ |         |/ /
+ |  || ||  |_/
+  \_oo_oo_/
+
+------------------------------
+  boxStyle: topAndBottomLine  
+------------------------------
+  \
+   \
+   /\___/\
+  /       \
+ |  ️Q   ️Q  |
+>===  *  ===<
+  \   O   /
+    ======
+  /       \ __
+ |         |\ \
+ |         |/ /
+ |  || ||  |_/
+  \_oo_oo_/
+```
+
+

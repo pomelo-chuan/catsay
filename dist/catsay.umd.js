@@ -427,8 +427,8 @@
         m = _ref.m,
         M = _ref.M;
 
-    var tpl = '      |\\_|\\                \n' + '      |EYE.EYE |_______________\n' + '      >\\mouth_<          ______)\n' + '         \\_  ______ \\     \n' + '         / /   / / \\ \\   \n' + '        (_/   (_/   \\_)   \n';
-    return tpl.replace(/EYE/g, eye || e || E || '@').replace(/mouth/g, mouth || m || M || 'm');
+    var tpl = '   /\\___/\\\n' + '  /       \\\n' + ' |  EYE   EYE  |\n' + '>===  *  ===<\n' + '  \\   MOUTH   /\n' + '    ======\n' + '  /       \\ __\n' + ' |         |\\ \\\n' + ' |         |/ /\n' + ' |  || ||  |_/\n' + '  \\_oo_oo_/\n';
+    return tpl.replace(/EYE/g, eye || e || E || '@').replace(/MOUTH/g, mouth || m || M || 'm');
   }
 
   function catsay(text) {
