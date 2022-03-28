@@ -6,17 +6,12 @@
 └──────────────────────┘
   \
    \
-   /\___/\
-  /       \
- |  @   @  |
->===  *  ===<
-  \   m   /
-    ======
-  /       \ __
- |         |\ \
- |         |/ /
- |  || ||  |_/
-  \_oo_oo_/
+      |\_|\
+      |@.@ |______________
+      >\m<          ______)
+         \_  ______ \
+         / /   / / \ \
+        (_/   (_/   \_)
 ```
 
 `catsay` is a cat say something that you want to say in terminal. I always use [cowsay](https://github.com/piuccio/cowsay) to print some message but I love cat so I write `catsay`;
@@ -37,9 +32,9 @@ help
 $ catsay -h
 ```
 
-Specific eye and mouse
+Specific eye, mouth, bubble style, cat.
 ```
-$ catsay I love you -E=d -M=U
+$ catsay I love you -E=d -M=U -C=miao -B=topAndBottomLine
 ```
 
 ## Use in js module
@@ -52,13 +47,12 @@ console.log(catsay.say('我爱你'));
 
 console.log(catsay.say({
   text: 'I Love You',
-  e: '9', // eye of cat, default is @
-  E: '9', // same as e
   eye: '9', // same as e
-  m: 'w', // mouth of cat, default is m
-  M: 'w', // same as m
+  E: '9', // short for eye
   mouse: 'w', // same as m
+  M: 'w', // short for mouse
   boxStyle: 'box' // box or topAndBottomLine, default is box
+  B: 'box' // short for boxStyle
 }));
 
 console.log(catsay.think('I Love You'));
@@ -92,34 +86,54 @@ $ echo print by catsay | catsay
 └─────────────────┘
   \
    \
-   /\___/\
-  /       \
- |  ️Q   ️Q  |
->===  *  ===<
-  \   O   /
-    ======
-  /       \ __
- |         |\ \
- |         |/ /
- |  || ||  |_/
-  \_oo_oo_/
+      |\_|\
+      |️Q.️Q |______________
+      >\O<          ______)
+         \_  ______ \
+         / /   / / \ \
+        (_/   (_/   \_)
 
 ------------------------------
-  boxStyle: topAndBottomLine  
+  boxStyle: topAndBottomLine
 ------------------------------
+  \
+   \
+      |\_|\
+      |️Q.️Q |______________
+      >\O<          ______)
+         \_  ______ \
+         / /   / / \ \
+        (_/   (_/   \_)
+```
+
+## cat
+```
+┌─────────────┐
+│  I am miao  │
+└─────────────┘
   \
    \
    /\___/\
   /       \
- |  ️Q   ️Q  |
+ |  @   @  |
 >===  *  ===<
-  \   O   /
+  \   m   /
     ======
   /       \ __
  |         |\ \
  |         |/ /
  |  || ||  |_/
   \_oo_oo_/
+
+┌──────────┐
+│  I am Q  │
+└──────────┘
+  \
+   \
+      |\_|\
+      |@.@ |______________
+      >\m<          ______)
+         \_  ______ \
+         / /   / / \ \
+        (_/   (_/   \_)
 ```
-
-

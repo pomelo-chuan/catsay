@@ -1,19 +1,25 @@
 #!/usr/bin/env node
 const yargs = require('yargs')
-  .usage('$0 [-M mouth_string] [-E eye_string] text')
+  .usage('$0 [-M mouth_string] [-E eye_string] [-cat cat_name_string] text')
   .options({
     M: {
       default: 'm',
-      type: 'string'
     },
     E: {
       default: '@',
-      type: 'string'
-    }
+    },
+    C: {
+      default: 'q',
+    },
+    B: {
+      default: 'box',
+    },
   })
   .describe({
     M: 'mouth of the cat',
     E: 'eye of the cat',
+    C: 'which cat to display',
+    B: 'style of bubble'
   })
   .help()
   .alias('h', 'help');

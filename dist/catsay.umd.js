@@ -400,14 +400,17 @@
         padding = _ref$padding === void 0 ? 2 : _ref$padding,
         _ref$type = _ref.type,
         type = _ref$type === void 0 ? 'say' : _ref$type,
-        _ref$boxStyle = _ref.boxStyle,
-        boxStyle = _ref$boxStyle === void 0 ? 'box' : _ref$boxStyle;
+        boxStyle = _ref.boxStyle,
+        B = _ref.B;
 
     var textList = [];
+
+    var _boxStyle = boxStyle || B || 'box';
+
     var breakPoint = computeBreakPoint(text);
     textList = getTextList(text, breakPoint);
 
-    if (boxStyle === 'topAndBottomLine') {
+    if (_boxStyle === 'topAndBottomLine') {
       textList = topAndBottomLine(textList, breakPoint, padding);
     } else {
       textList = border(textList, breakPoint, padding);
@@ -421,14 +424,20 @@
   function getCat(options) {
     var _ref = options || {},
         eye = _ref.eye,
-        e = _ref.e,
         E = _ref.E,
         mouth = _ref.mouth,
-        m = _ref.m,
-        M = _ref.M;
+        M = _ref.M,
+        cat = _ref.cat,
+        C = _ref.C;
 
-    var tpl = '   /\\___/\\\n' + '  /       \\\n' + ' |  EYE   EYE  |\n' + '>===  *  ===<\n' + '  \\   MOUTH   /\n' + '    ======\n' + '  /       \\ __\n' + ' |         |\\ \\\n' + ' |         |/ /\n' + ' |  || ||  |_/\n' + '  \\_oo_oo_/\n';
-    return tpl.replace(/EYE/g, eye || e || E || '@').replace(/MOUTH/g, mouth || m || M || 'm');
+    var miao = '   /\\___/\\\n' + '  /       \\\n' + ' |  EYE   EYE  |\n' + '>===  *  ===<\n' + '  \\   MOUTH   /\n' + '    ======\n' + '  /       \\ __\n' + ' |         |\\ \\\n' + ' |         |/ /\n' + ' |  || ||  |_/\n' + '  \\_oo_oo_/\n';
+    var q = '      |\\_|\\                \n' + '      |EYE.EYE |______________\n' + '      >\\MOUTH<          ______)\n' + '         \\_  ______ \\     \n' + '         / /   / / \\ \\   \n' + '        (_/   (_/   \\_)   \n';
+    var catMap = {
+      q: q,
+      miao: miao
+    };
+    var tpl = catMap[cat || C] || q;
+    return tpl.replace(/EYE/g, eye || E || '@').replace(/MOUTH/g, mouth || M || 'm');
   }
 
   function catsay(text) {
@@ -452,6 +461,7 @@
 
     return bubble(_text, {
       type: type,
+      B: _options.B,
       boxStyle: _options.boxStyle
     }) + getCat(_options);
   }
