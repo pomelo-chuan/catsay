@@ -1,6 +1,8 @@
 # catsay
 
-```
+A tiny ASCII tool that lets a cat say (or think) text in your terminal.
+
+```text
 ┌──────────────────────┐
 │  Hello from catsay.  │
 └──────────────────────┘
@@ -14,126 +16,145 @@
         (_/   (_/   \_)
 ```
 
-`catsay` is a cat say something that you want to say in terminal. I always use [cowsay](https://github.com/piuccio/cowsay) to print some message but I love cat so I write `catsay`;
+`catsay` is inspired by [cowsay](https://github.com/piuccio/cowsay), but with cats.
 
 ## Install
-```
-$ npm i @miaos/catsay -g
+
+```bash
+npm i -g @miaos/catsay
 ```
 
-## Usage
-```
-$ catsay I Love Cat.
-$ catthink Cat is so cute.
-```
+- Node.js: `>=18`
+- Global commands: `catsay`, `catthink`
 
-help
-```
-$ catsay -h
-```
+## Quick Start
 
-Specific eye, mouth, bubble style, cat.
-```
-$ catsay I love you -E=d -M=U -C=miao -B=topAndBottomLine
+```bash
+catsay I love cats
+catthink Cat is thinking...
 ```
 
-## Use in js module
-```javascript
-const catsay = require('@miaos/catsay');
-// or
-import * as catsay from '@miaos/catsay'
+You can also read from stdin:
 
-console.log(catsay.say('我爱你'));
-
-console.log(catsay.say({
-  text: 'I Love You',
-  eye: '9', // eye of cat
-  E: '9', // short for eye
-  mouse: 'w', // mouse of cat
-  M: 'w', // short for mouse
-  boxStyle: 'box', // box or topAndBottomLine, default is box
-  B: 'box', // short for boxStyle
-}));
-
-console.log(catsay.think('I Love You'));
+```bash
+echo "hello from pipe" | catsay
 ```
 
-## Use in browser
+Show help:
+
+```bash
+catsay -h
+```
+
+## CLI Options
+
+| Option | Description | Default |
+| --- | --- | --- |
+| `-E` | Eye character | `@` |
+| `-M` | Mouth character | `m` |
+| `-C` | Cat style (`q` / `miao` / `mochi`) | `q` |
+| `-B` | Bubble style (`box` / `topAndBottomLine`) | `box` |
+| `-W`, `--maxWidth` | Max line width before wrapping | `40` |
+
+Example:
+
+```bash
+catsay "I love you" -E o -M w -C mochi -B topAndBottomLine -W 30
+```
+
+## Use in JavaScript / TypeScript
+
+```ts
+import { say, think } from '@miaos/catsay';
+
+console.log(say('Hello'));
+
+console.log(
+  say({
+    text: 'I Love You',
+    eye: '9',     // same as E
+    E: '9',
+    mouth: 'w',   // same as M
+    M: 'w',
+    cat: 'mochi', // same as C
+    C: 'mochi',
+    boxStyle: 'box', // or topAndBottomLine, same as B
+    B: 'box',
+    maxWidth: 40, // same as W
+    W: 40,
+    padding: 1,
+  }),
+);
+
+console.log(think('Thinking...'));
+```
+
+### API
+
+- `say(input, options?)`
+- `think(input, options?)`
+- `catsay(input, options?, type?)`
+
+`input` supports:
+
+- `string`
+- `number`
+- `CatOptions`
+
+`CatOptions` fields:
+
+- `text?: string | number`
+- `eye?: string` / `E?: string`
+- `mouth?: string` / `M?: string`
+- `mouse?: string` (deprecated typo alias, use `mouth`)
+- `cat?: string` / `C?: string`
+- `boxStyle?: 'box' | 'topAndBottomLine'` / `B?: ...`
+- `padding?: number`
+- `maxWidth?: number` / `W?: number`
+
+## Browser Usage
+
 ```html
 <script src="path/to/catsay.umd.js"></script>
-<style>
-  pre {
-    font-family: Consolas, Monaco, monospace;
-  }
-</style>
-
-<pre id="cat"></pre>
+<pre id="cat" style="font-family: Consolas, Monaco, monospace"></pre>
 <script>
-  document.querySelector('#cat').innerHTML = catsay.think({ text: 'I love you.', boxStyle: 'topAndBottomLine' });
+  document.querySelector('#cat').textContent = catsay.think({
+    text: 'I love you.',
+    boxStyle: 'topAndBottomLine',
+  });
 </script>
-
 ```
 
-## Pipe
-```
-$ echo print by catsay | catsay
-```
+## Bubble Styles
 
-## boxStyle
-```
+`box`:
+
+```text
 ┌─────────────────┐
 │  boxStyle: box  │
 └─────────────────┘
-  \
-   \
-      |\_|\
-      |️Q.️Q |______________
-      >\O<          ______)
-         \_  ______ \
-         / /   / / \ \
-        (_/   (_/   \_)
+```
 
+`topAndBottomLine`:
+
+```text
 ------------------------------
   boxStyle: topAndBottomLine
 ------------------------------
-  \
-   \
-      |\_|\
-      |️Q.️Q |______________
-      >\O<          ______)
-         \_  ______ \
-         / /   / / \ \
-        (_/   (_/   \_)
 ```
 
-## cat
-```
-┌─────────────┐
-│  I am miao  │
-└─────────────┘
-  \
-   \
-   /\___/\
-  /       \
- |  @   @  |
->===  *  ===<
-  \   m   /
-    ======
-  /       \ __
- |         |\ \
- |         |/ /
- |  || ||  |_/
-  \_oo_oo_/
+## Cat Styles
 
-┌──────────┐
-│  I am Q  │
-└──────────┘
-  \
-   \
-      |\_|\
-      |@.@ |______________
-      >\m<          ______)
-         \_  ______ \
-         / /   / / \ \
-        (_/   (_/   \_)
+- `q` (default)
+- `miao`
+- `mochi`
+
+## Local Development
+
+```bash
+npm install
+npm run build
+npm test
 ```
+
+Build output is in `dist/`.

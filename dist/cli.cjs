@@ -1,3 +1,9 @@
+#!/usr/bin/env node
+'use strict';
+
+var node_path = require('node:path');
+var yargs = require('yargs');
+
 function ansiRegex({onlyFirst = false} = {}) {
 	// Valid string terminator sequences are BEL, ESC\, and 0x9c
 	const ST = '(?:\\u0007|\\u001B\\u005C|\\u009C)';
@@ -562,4 +568,74 @@ function think(text, options) {
     return catsay(text, options, 'think');
 }
 
-export { catsay, say, think };
+function stripFinalNewline(value) {
+    return value.replace(/(?:\r?\n)$/, '');
+}
+async function readStdin() {
+    if (process.stdin.isTTY) {
+        return '';
+    }
+    const chunks = [];
+    for await (const chunk of process.stdin) {
+        chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk);
+    }
+    return Buffer.concat(chunks).toString('utf8');
+}
+function parseArguments() {
+    return yargs(process.argv.slice(2))
+        .usage('$0 [-M mouth_string] [-E eye_string] [-C cat_name_string] [-B bubble_style_string] [-W max_width_number] text')
+        .options({
+        M: {
+            default: 'm',
+            type: 'string',
+        },
+        E: {
+            default: '@',
+            type: 'string',
+        },
+        C: {
+            default: 'q',
+            type: 'string',
+        },
+        B: {
+            default: 'box',
+            choices: ['box', 'topAndBottomLine'],
+            type: 'string',
+        },
+        W: {
+            default: 40,
+            type: 'number',
+        },
+        maxWidth: {
+            default: 40,
+            type: 'number',
+        },
+    })
+        .alias('W', 'maxWidth')
+        .describe({
+        M: 'mouth of the cat',
+        E: 'eye of the cat',
+        C: 'which cat to display',
+        B: 'style of bubble',
+        W: 'max bubble line width',
+    })
+        .help()
+        .alias('h', 'help')
+        .parseSync();
+}
+async function main() {
+    const argv = parseArguments();
+    const command = node_path.basename(process.argv[1] || argv.$0 || 'catsay');
+    const run = command === 'catthink' ? think : say;
+    if (argv._.length > 0) {
+        console.log(run(argv._.join(' '), argv));
+        return;
+    }
+    const data = stripFinalNewline(await readStdin());
+    if (data) {
+        console.log(run(data, argv));
+    }
+}
+void main();
+
+exports.main = main;
